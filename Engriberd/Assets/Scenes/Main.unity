@@ -549,7 +549,7 @@ GameObject:
   - component: {fileID: 243038603}
   - component: {fileID: 243038606}
   m_Layer: 0
-  m_Name: RedBird (1)
+  m_Name: BlackBird
   m_TagString: Bird
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -563,11 +563,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243038601}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.96, y: -3.06, z: 0}
+  m_LocalPosition: {x: -5.93, y: -1.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1276785626}
   m_Father: {fileID: 1512249842}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &243038603
 CircleCollider2D:
@@ -646,7 +647,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 8d65fab5aa828d7439359b962c57d921, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8d20e3fb65723114693388b7b8c277c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -666,12 +667,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 243038601}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dc01b8a8380be7439b0dc129a0a974f, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b46d864e5e94fb4aad724f7738017b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Parent: {fileID: 2079129357}
   RigidBody: {fileID: 243038604}
   Collider: {fileID: 243038603}
+  _explodeRatio: 1.2
+  _explodeTime: 1
+  _exploded: 0
+  _explodeField: {fileID: 1276785626}
 --- !u!1 &285770660 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4431414379632129311, guid: 3f60551be8ec56543829c00b8301f99b, type: 3}
@@ -909,11 +914,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 503639199}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.91, y: -1.83, z: 0}
+  m_LocalPosition: {x: -6.94, y: -2.97, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1512249842}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &511327104
 GameObject:
@@ -1346,9 +1351,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SlingShooter: {fileID: 2079129360}
   Birds:
+  - {fileID: 243038606}
   - {fileID: 503639200}
   - {fileID: 20423587}
-  - {fileID: 243038606}
   Enemies:
   - {fileID: 166992799}
   - {fileID: 1378295664}
@@ -1393,6 +1398,53 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 19, y: 11}
   m_EdgeRadius: 0
+--- !u!1 &1276785625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1276785626}
+  - component: {fileID: 1276785627}
+  m_Layer: 0
+  m_Name: ExplodeField
+  m_TagString: Bird
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1276785626
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276785625}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 243038602}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1276785627
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276785625}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.32
 --- !u!1 &1378295659
 GameObject:
   m_ObjectHideFlags: 0
@@ -1695,8 +1747,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 503639204}
   - {fileID: 243038602}
+  - {fileID: 503639204}
   - {fileID: 20423586}
   m_Father: {fileID: 0}
   m_RootOrder: 3

@@ -11,7 +11,7 @@ public class Bird : MonoBehaviour
 
     private BirdState _state;
     private float _minVelocity = 0.05f;
-    private bool _flagDestroy = false;
+    protected bool _flagDestroy = false;
 
     public UnityAction OnBirdDestroyed = delegate { };
     public UnityAction<Bird> OnBirdShot = delegate { };
@@ -43,9 +43,10 @@ public class Bird : MonoBehaviour
             StartCoroutine(DestroyAfter(2));
         }
 
+        OnFixedUpdate();
     }
 
-    private IEnumerator DestroyAfter(float second)
+    protected IEnumerator DestroyAfter(float second)
     {
         yield return new WaitForSeconds(second);
         Destroy(gameObject);
@@ -75,9 +76,20 @@ public class Bird : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         _state = BirdState.HitSomething;
+        OnHit();
     }
 
     public virtual void OnTap()
+    {
+        //Do nothing
+    }
+
+    public virtual void OnHit()
+    {
+        //Do nothing
+    }
+
+    public virtual void OnFixedUpdate()
     {
         //Do nothing
     }
