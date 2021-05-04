@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < Birds.Count; i++)
         {
             Birds[i].OnBirdDestroyed += ChangeBird;
+            Birds[i].OnBirdShot += AssignTrail;
         }
 
         for (int i = 0; i < Enemies.Count; i++)
@@ -53,6 +54,15 @@ public class GameController : MonoBehaviour
         if (Enemies.Count == 0)
         {
             _isGameEnded = true;
+        }
+    }
+
+    public void AssignTrail(Bird bird)
+    {
+        if (TrailController.Instance)
+        {
+            TrailController.Instance?.SetBird(bird);
+            StartCoroutine(TrailController.Instance?.SpawnTrail());
         }
     }
 }
