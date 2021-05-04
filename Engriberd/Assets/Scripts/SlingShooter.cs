@@ -13,6 +13,8 @@ public class SlingShooter : MonoBehaviour
     [SerializeField]
     private float _throwSpeed = 30f;
 
+    private Bird _bird;
+
     void Start()
     {
         _startPos = transform.position;
@@ -23,6 +25,8 @@ public class SlingShooter : MonoBehaviour
         Collider.enabled = false;
         Vector2 velocity = _startPos - (Vector2)transform.position;
         float distance = Vector2.Distance(_startPos, transform.position);
+
+        _bird.Shoot(velocity, distance, _throwSpeed);
 
         //Kembalikan ketapel ke posisi awal
         gameObject.transform.position = _startPos;
@@ -38,5 +42,12 @@ public class SlingShooter : MonoBehaviour
         if (dir.sqrMagnitude > _radius)
             dir = dir.normalized * _radius;
         transform.position = _startPos + dir;
+    }
+
+    public void InitiateBird(Bird bird)
+    {
+        _bird = bird;
+        _bird.MoveTo(gameObject.transform.position, gameObject);
+        Collider.enabled = true;
     }
 }
