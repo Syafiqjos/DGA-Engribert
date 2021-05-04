@@ -239,11 +239,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 20423582}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.54, y: -1.73, z: 0}
+  m_LocalPosition: {x: -8.28, y: -3.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1512249842}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &20423587
 MonoBehaviour:
@@ -790,7 +790,7 @@ GameObject:
   - component: {fileID: 503639201}
   - component: {fileID: 503639200}
   m_Layer: 0
-  m_Name: RedBird (2)
+  m_Name: YellowBird
   m_TagString: Bird
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -805,12 +805,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 503639199}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dc01b8a8380be7439b0dc129a0a974f, type: 3}
+  m_Script: {fileID: 11500000, guid: c5e841a9f1d4e4c418584f485992c46f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Parent: {fileID: 2079129357}
   RigidBody: {fileID: 503639202}
   Collider: {fileID: 503639201}
+  _boostForce: 80
+  _hasBoost: 0
 --- !u!58 &503639201
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -888,7 +890,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 8d65fab5aa828d7439359b962c57d921, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 876a7e9d1b352d341ada0f78cef0f0fd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -907,11 +909,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 503639199}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.32, y: -3.06, z: 0}
+  m_LocalPosition: {x: -5.91, y: -1.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1512249842}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &511327104
 GameObject:
@@ -1322,6 +1324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1126215995}
   - component: {fileID: 1126215994}
+  - component: {fileID: 1126215996}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1343,12 +1346,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SlingShooter: {fileID: 2079129360}
   Birds:
+  - {fileID: 503639200}
   - {fileID: 20423587}
   - {fileID: 243038606}
-  - {fileID: 503639200}
   Enemies:
   - {fileID: 166992799}
   - {fileID: 1378295664}
+  TapCollider: {fileID: 1126215996}
 --- !u!4 &1126215995
 Transform:
   m_ObjectHideFlags: 0
@@ -1357,12 +1361,38 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1126215993}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.034555, y: -1.4128209, z: -1.1559209}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1126215996
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126215993}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 19, y: 11}
+  m_EdgeRadius: 0
 --- !u!1 &1378295659
 GameObject:
   m_ObjectHideFlags: 0
@@ -1665,9 +1695,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 20423586}
-  - {fileID: 243038602}
   - {fileID: 503639204}
+  - {fileID: 243038602}
+  - {fileID: 20423586}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
