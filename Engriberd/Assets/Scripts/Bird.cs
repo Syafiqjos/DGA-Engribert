@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 public class Bird : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class Bird : MonoBehaviour
     private BirdState _state;
     private float _minVelocity = 0.05f;
     private bool _flagDestroy = false;
+
+    public UnityAction OnBirdDestroyed = delegate { };
 
     void Start()
     {
@@ -59,4 +62,8 @@ public class Bird : MonoBehaviour
 
     }
 
+    void OnDestroy()
+    {
+        OnBirdDestroyed();
+    }
 }
