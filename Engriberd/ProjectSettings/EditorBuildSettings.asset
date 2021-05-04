@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/BonusLevel.unity
+    guid: c541acffb87378440afe0525b59ec2dc
+  - enabled: 1
+    path: Assets/Scenes/Congratz.unity
+    guid: 9985537db1a1e2c46bf82e2de585eeb0
   m_configObjects: {}
